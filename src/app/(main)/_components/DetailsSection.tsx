@@ -12,11 +12,11 @@ export default function DetailsSection() {
       </div>
       <div className="col-span-1 row-span-1 flex flex-col items-center border-2 bg-[#B8FF9F] px-10 py-20">
         <BikeIcon className="h-10 w-10" />
-        <p className="w-32 text-center">Non- Contact Shipping</p>
+        <p className="w-32 text-center">Non-Contact Shipping</p>
       </div>
       <div className="col-span-1 row-span-1 flex flex-col items-center border-2 bg-[#FFA6F6] px-10 py-20">
         <CoinsIcon className="h-10 w-10" />
-        <p className="w-32 text-center">Money Back Guranteed</p>
+        <p className="w-32 text-center">Money Back Guaranteed</p>
       </div>
       <div className="col-span-1 row-span-2 flex flex-col items-end justify-center border-2 bg-[#FFF59F] px-10 py-20">
         <CreditCardIcon className="h-10 w-10" />

@@ -19,7 +19,7 @@ export default function MarqueeSection() {
   return (
     <div
       ref={containerRef}
-      className="font-rubrik-mono relative overflow-hidden bg-[#FF9F9F] py-4"
+      className="font-rubik-mono relative overflow-hidden bg-[#FF9F9F] py-4"
     >
       <motion.div
         style={{ x: smoothX }}
