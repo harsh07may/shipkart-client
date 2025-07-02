@@ -1,0 +1,60 @@
+import Image from "next/image";
+
+const CategoryCard = ({
+  title,
+  src,
+  className = "",
+  textSize = "text-xl md:text-3xl",
+}: {
+  title: string;
+  src: string;
+  className?: string;
+  textSize?: string;
+}) => (
+  <div
+    className={`group relative aspect-[2.35/1] overflow-hidden bg-black ${className}`}
+  >
+    <Image
+      src={src}
+      fill
+      alt={title}
+      className="object-cover opacity-80 transition-transform duration-300 group-hover:scale-110 group-hover:blur-xs"
+    />
+    <h2
+      className={`absolute inset-0 flex items-center justify-center font-extrabold text-white ${textSize}`}
+    >
+      {title}
+    </h2>
+  </div>
+);
+
+export default function CategorySection() {
+  return (
+    <section className="relative flex items-center justify-center bg-white py-10">
+      {/* Background Grid */}
+      <Image
+        src="/category-background.png"
+        alt="background"
+        fill
+        className="absolute inset-0 z-0 object-cover"
+      />
+
+      {/* Foreground Grid */}
+      <div className="relative z-10 grid w-[90%] max-w-7xl grid-cols-1 gap-5 md:grid-cols-3">
+        {/* Left Card */}
+        <CategoryCard
+          title="STREET STYLE"
+          src="/mens-streetwear.png"
+          className="col-span-2"
+          textSize="text-2xl md:text-4xl"
+        />
+
+        {/* Right Column */}
+        <div className="flex flex-col gap-4">
+          <CategoryCard title="FORMALS" src="/mens-formals.png" />
+          <CategoryCard title="CASUALS" src="/mens-streetwear.png" />
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -12,19 +12,22 @@ const navLinks = [
 function Header() {
   return (
     <header className="border-b-2 bg-[#FFF9ED] font-mono">
-      <div className="mx-auto flex h-16 items-center justify-between px-8">
+      <div
+        id="navbar"
+        className="container mx-auto flex h-16 items-center justify-center md:justify-between"
+      >
         <nav className="flex items-center gap-10">
           {navLinks.map(({ href, label }) => (
             <Link
               key={label}
               href={href}
-              className="font-semibold tracking-tighter text-sm md:text-lg hover:scale-105 transition"
+              className="text-sm font-semibold tracking-tighter transition hover:scale-105 md:text-lg"
             >
               {label}
             </Link>
           ))}
         </nav>
-        <div className="hidden md:flex items-center gap-5">
+        <div className="hidden items-center gap-5 md:flex">
           <Button
             variant="neutral"
             className="cursor-pointer rounded-md"
@@ -37,7 +40,7 @@ function Header() {
           </Button>
           <Button
             variant="default"
-            className="cursor-pointer bg-[#A8A6FF] rounded-md px-5"
+            className="cursor-pointer rounded-md bg-[#A8A6FF] px-5"
           >
             Sign-Up
           </Button>

@@ -1,12 +1,15 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import CategoriesSection from "./_components/CategoriesSection";
+import DetailsSection from "./_components/DetailsSection";
+import HeroSection from "./_components/HeroSection";
+import MarqueeSection from "./_components/MaqueeSection";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Button>Click me!</Button>
-      </main>
-    </div>
+    <main className="dotted-bg min-h-screen bg-amber-50 font-sans">
+      <HeroSection />
+      <MarqueeSection />
+      <CategoriesSection />
+      <DetailsSection />
+    </main>
   );
 }

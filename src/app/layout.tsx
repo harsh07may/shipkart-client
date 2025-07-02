@@ -1,10 +1,5 @@
 import type { Metadata } from "next";
-import {
-  Geist,
-  Geist_Mono,
-  Overpass_Mono,
-  Rubik_Mono_One,
-} from "next/font/google";
+import { Overpass_Mono, Rubik_Mono_One } from "next/font/google";
 import "./globals.css";
 
 const overpassMono = Overpass_Mono({

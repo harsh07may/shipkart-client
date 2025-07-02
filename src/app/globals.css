@@ -61,6 +61,7 @@
   --shadow-shadow: var(--shadow);
   --font-sans: var(--font-overpass-mono);
   --font-mono: var(--font-overpass-mono);
+  --font-rubrik-mono: var(--font-rubrik-mono);
   --font-weight-base: 500;
   --font-weight-heading: 700;
 }
@@ -78,4 +79,23 @@
   h6 {
     @apply font-heading;
   }
+}
+
+@layer utilities {
+  .dotted-bg {
+    @apply bg-[radial-gradient(#3f3f3f_1px,transparent_2px)] bg-[length:50px_50px];
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
+
+.perspective-3d {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  background-image:
+    linear-gradient(#0001 1px, transparent 1px),
+    linear-gradient(90deg, #0001 1px, transparent 1px);
+  background-size: 40px 40px;
 }
