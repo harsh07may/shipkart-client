@@ -2,6 +2,7 @@ import CategoriesSection from "./_components/CategoriesSection";
 import DetailsSection from "./_components/DetailsSection";
 import HeroSection from "./_components/HeroSection";
 import MarqueeSection from "./_components/MaqueeSection";
+import NewArrivalsSection from "./_components/NewArrivalsSection";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <MarqueeSection />
       <CategoriesSection />
       <DetailsSection />
+      <NewArrivalsSection />
     </main>
   );
 }

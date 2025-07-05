@@ -44,7 +44,7 @@ export default function CategorySection() {
         {/* Left Card */}
         <CategoryCard
           title="STREET STYLE"
-          src="/mens-streetwear.png"
+          src="/images/mens-streetwear.png"
           className="md:col-span-2"
           textSize="text-2xl md:text-4xl"
         />
@@ -53,12 +53,12 @@ export default function CategorySection() {
         <div className="flex flex-col gap-4 md:h-full">
           <CategoryCard
             title="FORMALS"
-            src="/mens-formals.png"
+            src="/images/mens-formals.png"
             className="flex-1"
           />
           <CategoryCard
             title="CASUALS"
-            src="/mens-streetwear.png"
+            src="/images/mens-streetwear.png"
             className="flex-1"
           />
         </div>
