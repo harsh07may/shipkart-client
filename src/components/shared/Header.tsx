@@ -11,7 +11,7 @@ const navLinks = [
 
 function Header() {
   return (
-    <header className="border-b-2 bg-[#FFF9ED] font-mono">
+    <header className="fixed top-0 z-20 w-full border-b-2 bg-[#FFF9ED] font-mono">
       <div
         id="navbar"
         className="container mx-auto flex h-16 items-center justify-center md:justify-between"
@@ -35,14 +35,19 @@ function Header() {
           >
             <ShoppingCartIcon className="h-4 w-4" />
           </Button>
-          <Button variant="neutral" className="cursor-pointer rounded-md px-5">
-            Log-In
+          <Button
+            asChild
+            variant="neutral"
+            className="cursor-pointer rounded-md px-5"
+          >
+            <Link href="/auth">Sign-in</Link>
           </Button>
           <Button
+            asChild
             variant="default"
             className="cursor-pointer rounded-md bg-[#A8A6FF] px-5"
           >
-            Sign-Up
+            <Link href="/auth">Sign-up</Link>
           </Button>
         </div>
       </div>

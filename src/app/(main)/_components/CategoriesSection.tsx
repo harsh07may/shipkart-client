@@ -30,7 +30,7 @@ const CategoryCard = ({
 
 export default function CategorySection() {
   return (
-    <section className="relative flex items-center justify-center bg-white py-10">
+    <section className="relative flex items-center justify-center bg-white py-20">
       {/* Background Grid */}
       <Image
         src="/category-background.png"
@@ -45,14 +45,22 @@ export default function CategorySection() {
         <CategoryCard
           title="STREET STYLE"
           src="/mens-streetwear.png"
-          className="col-span-2"
+          className="md:col-span-2"
           textSize="text-2xl md:text-4xl"
         />
 
         {/* Right Column */}
-        <div className="flex flex-col gap-4">
-          <CategoryCard title="FORMALS" src="/mens-formals.png" />
-          <CategoryCard title="CASUALS" src="/mens-streetwear.png" />
+        <div className="flex flex-col gap-4 md:h-full">
+          <CategoryCard
+            title="FORMALS"
+            src="/mens-formals.png"
+            className="flex-1"
+          />
+          <CategoryCard
+            title="CASUALS"
+            src="/mens-streetwear.png"
+            className="flex-1"
+          />
         </div>
       </div>
     </section>
