@@ -1,11 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-export const AuthLayout = ({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) => {
+const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="grid min-h-screen w-full grid-cols-1 bg-neutral-100 md:grid-cols-2">
       {/* Left side - Form */}

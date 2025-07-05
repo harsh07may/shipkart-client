@@ -29,25 +29,28 @@ function Header() {
         </nav>
         <div className="hidden items-center gap-5 md:flex">
           <Button
+            asChild
             variant="neutral"
             className="cursor-pointer rounded-md"
             aria-label="View cart"
           >
-            <ShoppingCartIcon className="h-4 w-4" />
+            <Link href="/cart">
+              <ShoppingCartIcon className="h-4 w-4" />
+            </Link>
           </Button>
           <Button
             asChild
             variant="neutral"
             className="cursor-pointer rounded-md px-5"
           >
-            <Link href="/auth">Sign-in</Link>
+            <Link href="/sigin">Sign-in</Link>
           </Button>
           <Button
             asChild
             variant="default"
             className="cursor-pointer rounded-md bg-[#A8A6FF] px-5"
           >
-            <Link href="/auth">Sign-up</Link>
+            <Link href="/signup">Sign-up</Link>
           </Button>
         </div>
       </div>
