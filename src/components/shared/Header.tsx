@@ -43,7 +43,7 @@ function Header() {
             variant="neutral"
             className="cursor-pointer rounded-md px-5"
           >
-            <Link href="/sigin">Sign-in</Link>
+            <Link href="/signin">Sign-in</Link>
           </Button>
           <Button
             asChild

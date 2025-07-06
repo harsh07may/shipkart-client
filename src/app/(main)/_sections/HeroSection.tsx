@@ -1,6 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const homepageSections = [
   "New Arrival",
@@ -34,6 +36,10 @@ const genderCategorySections = [
 ];
 
 function HeroSection() {
+  const [selectedGender, setSelectedGender] = useState<string>(
+    genderCategorySections[0].label,
+  );
+
   return (
     <section className="container mx-auto grid grid-cols-1 items-stretch gap-5 pt-20 pb-14 md:min-h-screen md:grid-cols-3">
       {/* LEFT SECTION */}
@@ -42,19 +48,25 @@ function HeroSection() {
         <nav
           id="category-gender"
           aria-label="Gender Categories"
-          className="flex items-center justify-start gap-5"
+          className="flex items-center justify-center gap-5 md:justify-start"
         >
-          {genderCategorySections.map(({ label, img }) => (
-            <button
-              key={label}
-              type="button"
-              className="group flex-center h-10 w-10 rounded-full border-2 transition hover:w-24 hover:bg-[#A8A6FF]"
-              aria-label={label}
-            >
-              <Image width="32" height="32" src={img.src} alt={img.alt} />
-              <span className="hidden group-hover:block">{label}</span>
-            </button>
-          ))}
+          {genderCategorySections.map(({ label, img }) => {
+            const isSelected = selectedGender === label;
+            return (
+              <button
+                key={label}
+                type="button"
+                className={`group flex-center h-10 w-10 rounded-full border-2 transition ${isSelected ? "w-24 bg-[#A8A6FF]" : "hover:rotate-6"} `}
+                aria-label={label}
+                onClick={() => setSelectedGender(label)}
+              >
+                <Image width="32" height="32" src={img.src} alt={img.alt} />
+                <span className={`${isSelected ? "ml-2 block" : "hidden"}`}>
+                  {label}
+                </span>
+              </button>
+            );
+          })}
         </nav>
 
         {/* Homepage Navigation Buttons: Hidden on mobile */}

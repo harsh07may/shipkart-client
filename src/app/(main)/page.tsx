@@ -1,8 +1,8 @@
-import CategoriesSection from "./_components/CategoriesSection";
-import DetailsSection from "./_components/DetailsSection";
-import HeroSection from "./_components/HeroSection";
-import MarqueeSection from "./_components/MaqueeSection";
-import NewArrivalsSection from "./_components/NewArrivalsSection";
+import CategoriesSection from "./_sections/CategoriesSection";
+import DetailsSection from "./_sections/DetailsSection";
+import HeroSection from "./_sections/HeroSection";
+import MarqueeSection from "./_sections/MaqueeSection";
+import NewArrivalsSection from "./_sections/NewArrivalsSection";
 
 export default function Home() {
   return (
