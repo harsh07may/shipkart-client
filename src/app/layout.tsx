@@ -7,9 +7,9 @@ const overpassMono = Overpass_Mono({
   subsets: ["latin"],
 });
 
-const rubrikMono = Rubik_Mono_One({
+const rubikMono = Rubik_Mono_One({
   weight: ["400"],
-  variable: "--font-rubrik-mono",
+  variable: "--font-rubik-mono",
   subsets: ["latin"],
 });
 
@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${overpassMono.variable} ${rubrikMono.variable} antialiased`}
+        className={`${overpassMono.variable} ${rubikMono.variable} antialiased`}
       >
         {children}
       </body>

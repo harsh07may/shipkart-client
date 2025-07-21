@@ -1,93 +1,36 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 
 const homepageSections = [
-  "New Arrival",
-  "Trending Now",
-  "Category",
-  "Essentials",
-];
-
-const genderCategorySections = [
-  {
-    label: "MEN",
-    img: {
-      src: "https://img.icons8.com/pulsar-line/48/boy.png",
-      alt: "boys",
-    },
-  },
-  {
-    label: "WOMEN",
-    img: {
-      src: "https://img.icons8.com/pulsar-line/48/girl.png",
-      alt: "girls",
-    },
-  },
-  {
-    label: "KIDS",
-    img: {
-      src: "https://img.icons8.com/windows/32/babys-room.png",
-      alt: "kids",
-    },
-  },
+  { label: "New Arrival", link: "/store/new-arrivals" },
+  { label: "Trending Now", link: "/store/trending-now" },
+  { label: "Category", link: "category" },
+  { label: "Essentials", link: "/store/essentials" },
 ];
 
 function HeroSection() {
-  const [selectedGender, setSelectedGender] = useState<string>(
-    genderCategorySections[0].label,
-  );
-
   return (
     <section className="container mx-auto grid grid-cols-1 items-stretch gap-5 pt-20 pb-14 md:min-h-screen md:grid-cols-3">
       {/* LEFT SECTION */}
       <article className="col-span-2 space-y-5 py-12">
-        {/* Gender Category */}
-        <nav
-          id="category-gender"
-          aria-label="Gender Categories"
-          className="flex items-center justify-center gap-5 md:justify-start"
-        >
-          {genderCategorySections.map(({ label, img }) => {
-            const isSelected = selectedGender === label;
-            return (
-              <button
-                key={label}
-                type="button"
-                className={`group flex-center h-10 w-10 rounded-full border-2 transition ${isSelected ? "w-24 bg-[#A8A6FF]" : "hover:rotate-6"} `}
-                aria-label={label}
-                onClick={() => setSelectedGender(label)}
-              >
-                <Image width="32" height="32" src={img.src} alt={img.alt} />
-                <span className={`${isSelected ? "ml-2 block" : "hidden"}`}>
-                  {label}
-                </span>
-              </button>
-            );
-          })}
-        </nav>
-
         {/* Homepage Navigation Buttons: Hidden on mobile */}
         <nav
           id="homepage-sections"
           aria-label="Homepage Sections"
           className="hidden items-stretch justify-center border-4 border-black bg-slate-50 p-4 shadow-[4px_4px_0_0_#000] md:flex"
         >
-          {homepageSections.map((label, i, arr) => (
+          {homepageSections.map((section, i, arr) => (
             <Link
-              key={label}
-              href="#"
+              key={section.label}
+              href={section.link}
               className={`border-2 border-black bg-white px-3 py-1 font-bold shadow-[2px_2px_0_0_#000] transition hover:bg-yellow-100 ${
                 i !== arr.length - 1 ? "border-r-0" : ""
               }`}
             >
-              {label}
+              {section.label}
             </Link>
           ))}
         </nav>
-
         {/* Final Sale Banner */}
         <aside
           aria-label="Final Sale Banner"

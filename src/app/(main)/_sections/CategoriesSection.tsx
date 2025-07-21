@@ -1,17 +1,21 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const CategoryCard = ({
   title,
   src,
   className = "",
   textSize = "text-xl md:text-3xl",
+  link,
 }: {
   title: string;
   src: string;
   className?: string;
   textSize?: string;
+  link: string;
 }) => (
-  <div
+  <Link
+    href={link}
     className={`group relative aspect-[2.35/1] overflow-hidden bg-black ${className}`}
   >
     <Image
@@ -25,7 +29,7 @@ const CategoryCard = ({
     >
       {title}
     </h2>
-  </div>
+  </Link>
 );
 
 export default function CategorySection() {
@@ -47,6 +51,7 @@ export default function CategorySection() {
           src="/images/mens-streetwear.png"
           className="md:col-span-2"
           textSize="text-2xl md:text-4xl"
+          link="/store/street-style"
         />
 
         {/* Right Column */}
@@ -55,11 +60,13 @@ export default function CategorySection() {
             title="FORMALS"
             src="/images/mens-formals.png"
             className="flex-1"
+            link="/store/formals"
           />
           <CategoryCard
             title="CASUALS"
             src="/images/mens-streetwear.png"
             className="flex-1"
+            link="/store/casuals"
           />
         </div>
       </div>
