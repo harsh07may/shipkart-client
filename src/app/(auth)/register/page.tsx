@@ -1,3 +1,4 @@
+"use client";
 import { InputField } from "@/components/shared/InputField";
 import Link from "next/link";
 import React from "react";
@@ -47,9 +48,7 @@ function SignUpPage() {
           </label>
         </div>
 
-        <div>
-          
-        </div>
+        <div></div>
         <button
           type="submit"
           className="w-full border-4 border-black bg-black py-3 font-bold text-white transition-colors hover:bg-white hover:text-black"

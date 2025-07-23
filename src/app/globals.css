@@ -36,6 +36,8 @@
   --chart-4: #04c86d;
   --chart-5: #7a83ff;
   --chart-active-dot: #fff;
+  --destructive: #811d1d;
+  --destructive-foreground: #f8fafc;
 }
 
 @theme inline {
@@ -52,6 +54,8 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
 
   --spacing-boxShadowX: 4px;
   --spacing-boxShadowY: 4px;
@@ -64,6 +68,8 @@
   --font-rubik-mono: var(--font-rubik-mono);
   --font-weight-base: 500;
   --font-weight-heading: 700;
+  --destructive: #ff0000;
+  --destructive-foreground: #f8fafc;
 }
 
 @layer base {

@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import { Overpass_Mono, Rubik_Mono_One } from "next/font/google";
 import "./globals.css";
@@ -29,6 +30,7 @@ export default function RootLayout({
         className={`${overpassMono.variable} ${rubikMono.variable} antialiased`}
       >
         {children}
+        <Toaster richColors closeButton position="top-center" />
       </body>
     </html>
   );
