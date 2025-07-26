@@ -1,4 +1,6 @@
+"use client";
 import { Button } from "@/components/ui/button";
+import useAuth from "@/hook/useAuth";
 import { ShoppingCartIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -10,6 +12,7 @@ const navLinks = [
 ];
 
 function Header() {
+  const { isAuthenticated, logout } = useAuth();
   return (
     <header className="fixed top-0 z-20 w-full border-b-2 bg-[#FFF9ED] font-mono">
       <div
@@ -38,20 +41,35 @@ function Header() {
               <ShoppingCartIcon className="h-4 w-4" />
             </Link>
           </Button>
-          <Button
-            asChild
-            variant="neutral"
-            className="cursor-pointer rounded-md px-5"
-          >
-            <Link href="/signin">Sign-in</Link>
-          </Button>
-          <Button
-            asChild
-            variant="default"
-            className="cursor-pointer rounded-md bg-[#A8A6FF] px-5"
-          >
-            <Link href="/signup">Sign-up</Link>
-          </Button>
+          {!isAuthenticated && (
+            <Button
+              asChild
+              variant="neutral"
+              className="cursor-pointer rounded-md px-5"
+            >
+              <Link href="/login">Sign-in</Link>
+            </Button>
+          )}
+          {!isAuthenticated && (
+            <Button
+              asChild
+              variant="default"
+              className="cursor-pointer rounded-md bg-[#A8A6FF] px-5"
+            >
+              <Link href="/register">Sign-up</Link>
+            </Button>
+          )}
+          {isAuthenticated && (
+            <Button
+              variant="neutral"
+              className="cursor-pointer rounded-md px-5"
+              onClick={() => {
+                logout();
+              }}
+            >
+              Logout
+            </Button>
+          )}
         </div>
       </div>
     </header>

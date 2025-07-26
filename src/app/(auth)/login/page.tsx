@@ -8,17 +8,23 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import api from "@/lib/api";
+import useAuth from "@/hook/useAuth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 import { z } from "zod";
 import { loginSchema } from "../schema";
-
 function SignInPage() {
+  const { login, isLoggingIn, isAuthenticated } = useAuth();
+
   const router = useRouter();
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.replace("/");
+    }
+  }, [router, isAuthenticated]);
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -29,19 +35,7 @@ function SignInPage() {
   });
 
   async function onSubmit(data: z.infer<typeof loginSchema>) {
-    try {
-      const response = await api.post(`/auth/login`, data);
-
-      const { token } = response.data.data;
-
-      localStorage.setItem("token", token);
-      toast.success("Success!");
-      router.push("/");
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (err: any) {
-      const error = err?.response.data.errors[0];
-      toast.error(error);
-    }
+    login(data);
   }
 
   return (
@@ -62,6 +56,7 @@ function SignInPage() {
                   <Input
                     className="w-full border-4 border-black bg-neutral-100 px-4 py-3 transition-colors focus:bg-white focus:ring-2 focus:ring-black focus:outline-none"
                     placeholder="you@example.com"
+                    type="email"
                     required
                     {...field}
                   />
@@ -90,16 +85,6 @@ function SignInPage() {
             )}
           />
           <div className="mb-6 flex items-center justify-between">
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="remember"
-                className="h-5 w-5 border-2 border-black accent-black"
-              />
-              <label htmlFor="remember" className="ml-2 text-sm">
-                Remember me
-              </label>
-            </div>
             <Link
               href="/forgot-password"
               className="text-sm underline underline-offset-4"
@@ -109,9 +94,10 @@ function SignInPage() {
           </div>
           <button
             type="submit"
+            disabled={isLoggingIn}
             className="w-full border-4 border-black bg-black py-3 font-bold text-white transition-colors hover:bg-white hover:text-black"
           >
-            SIGN IN
+            {isLoggingIn ? "SIGNING IN... " : "SIGN IN"}
           </button>
         </form>
       </Form>
@@ -119,7 +105,7 @@ function SignInPage() {
         <p>
           Don&apos;t have an account?{" "}
           <Link
-            href="/signup"
+            href="/register"
             className="font-bold underline underline-offset-4"
           >
             Create an account

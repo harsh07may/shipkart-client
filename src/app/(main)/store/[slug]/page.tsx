@@ -70,8 +70,6 @@ async function StorePage({ params, searchParams }: Props) {
     return categorie.link == slug;
   });
 
-  console.log(filters.gender);
-
   return (
     <main className="min-h-screen bg-white pt-20 pb-14 font-sans">
       <section className="container mx-auto flex flex-col gap-5 lg:flex-row">
