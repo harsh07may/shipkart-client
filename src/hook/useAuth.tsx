@@ -31,7 +31,12 @@ function useAuth() {
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onError: (error: any) => {
-      const message = error.response?.data?.message || "Login failed";
+      let message = "Login failed";
+      
+      if (error.response?.data?.errors && Array.isArray(error.response.data.errors)) {
+        message = error.response.data.errors[0];
+      }
+      
       toast.error(message);
     },
   });
@@ -44,7 +49,11 @@ function useAuth() {
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onError: (error: any) => {
-      const message = error.response?.data?.message || "Registration failed";
+      let message = "Registration failed";
+      
+      if (error.response?.data?.errors && Array.isArray(error.response.data.errors)) {
+        message = error.response.data.errors[0];
+      }
       toast.error(message);
     },
   });
@@ -75,21 +84,28 @@ function useAuth() {
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onError: (error: any) => {
-      const message = error.response?.data?.message || "Failed to send reset email";
+      const message =
+        error.response?.data?.message || "Failed to send reset email";
       toast.error(message);
     },
   });
 
   // Reset password mutation
   const resetPasswordMutation = useMutation({
-    mutationFn: ({ token, newPassword }: { token: string; newPassword: string }) =>
-      authService.resetPassword(token, newPassword),
+    mutationFn: ({
+      token,
+      newPassword,
+    }: {
+      token: string;
+      newPassword: string;
+    }) => authService.resetPassword(token, newPassword),
     onSuccess: () => {
       toast.success("Password reset successful!");
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onError: (error: any) => {
-      const message = error.response?.data?.message || "Failed to reset password";
+      const message =
+        error.response?.data?.message || "Failed to reset password";
       toast.error(message);
     },
   });

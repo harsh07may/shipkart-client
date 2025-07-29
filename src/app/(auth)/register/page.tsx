@@ -29,7 +29,9 @@ function SignUpPage() {
       password: "",
       confirmPassword: "",
     },
+    mode: "onSubmit",
   });
+
   // TODO: Fix this
   async function onSubmit(data: RegisterForm) {
     register(data);
