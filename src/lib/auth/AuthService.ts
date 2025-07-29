@@ -26,7 +26,13 @@ export const login = async (
 
 export const getCurrentUser = async (): Promise<User> => {
   const response = await api.get("/auth/me");
-  return response.data.data;
+  const { Email, Name, Role } = response.data.data;
+  
+  return {
+    email: Email,
+    name: Name,
+    role: Role,
+  };
 };
 
 export const logout = async (): Promise<void> => {
@@ -62,10 +68,18 @@ export const resetPassword = async (
 };
 
 export const register = async (userData: RegisterCredentials) => {
-  const response = await api.post("/auth/register", userData);
-  const { Id, fullName, email } = response.data.data;
+  // Transform the data to match backend expectations
+  const registerData = {
+    FirstName: userData.firstName,
+    LastName: userData.lastName,
+    Email: userData.email,
+    Password: userData.password,
+  };
 
-  return { Id, fullName, email };
+  const response = await api.post("/users/register", registerData);
+  const { Id, Name, Email } = response.data.data;
+
+  return { Id, Name, Email };
 };
 
 export const isAuthenticated = (): boolean => {

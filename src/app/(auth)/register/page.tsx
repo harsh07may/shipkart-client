@@ -5,8 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
-import z from "zod";
-import { registerSchema } from "../schema";
 
 import {
   Form,
@@ -17,11 +15,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { registerSchema, type RegisterForm } from "../schema";
 
 function SignUpPage() {
-  const { register, isAuthenticated } = useAuth();
+  const { register } = useAuth();
 
-  const form = useForm<z.infer<typeof registerSchema>>({
+  const form = useForm<RegisterForm>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       firstName: "",
@@ -32,7 +31,7 @@ function SignUpPage() {
     },
   });
   // TODO: Fix this
-  async function onSubmit(data: z.infer<typeof registerSchema>) {
+  async function onSubmit(data: RegisterForm) {
     register(data);
   }
 

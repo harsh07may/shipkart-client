@@ -1,16 +1,15 @@
-  import { loginSchema, registerSchema } from "@/app/(auth)/schema";
-  import z from "zod";
+import { LoginForm, RegisterForm } from "@/app/(auth)/schema";
 
-  export interface User {
-    name: string;
-    email: string;
-    role: string;
-  }
+export interface User {
+  name: string;
+  email: string;
+  role: string;
+}
 
-  export type LoginCredentials = z.infer<typeof loginSchema>;
-  export type RegisterCredentials = z.infer<typeof registerSchema>;
+export type LoginCredentials = LoginForm;
+export type RegisterCredentials = RegisterForm;
 
-  export interface AuthResponse {
-    user: User;
-    token: string;
-  }
+export interface AuthResponse {
+  user: User;
+  token: string;
+}

@@ -14,8 +14,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { loginSchema } from "../schema";
+import { loginSchema, type LoginForm } from "../schema";
+import { PublicRoute } from "@/components/shared/ProtectedRoute";
+
 function SignInPage() {
   const { login, isLoggingIn, isAuthenticated } = useAuth();
 
@@ -26,7 +27,7 @@ function SignInPage() {
     }
   }, [router, isAuthenticated]);
 
-  const form = useForm<z.infer<typeof loginSchema>>({
+  const form = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
@@ -34,7 +35,7 @@ function SignInPage() {
     },
   });
 
-  async function onSubmit(data: z.infer<typeof loginSchema>) {
+  async function onSubmit(data: LoginForm) {
     login(data);
   }
 
