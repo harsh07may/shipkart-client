@@ -1,10 +1,11 @@
 import { APIRESPONSE } from "@/constants";
+import { env } from "@/config/env";
 import axios from "axios";
 import { toast } from "sonner";
 import { clearToken, getToken, setToken } from "./auth/TokenManager";
 
 const api = axios.create({
-  baseURL: "https://localhost:7019/api",
+  baseURL: env.API_URL,
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",

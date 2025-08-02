@@ -8,6 +8,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Loading } from "@/components/ui/loading";
 import useAuth from "@/hook/useAuth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
@@ -95,9 +96,13 @@ function SignInPage() {
           <button
             type="submit"
             disabled={isLoggingIn}
-            className="w-full border-4 border-black bg-black py-3 font-bold text-white transition-colors hover:bg-white hover:text-black"
+            className="w-full border-4 border-black bg-black py-3 font-bold text-white transition-colors hover:bg-white hover:text-black disabled:opacity-50"
           >
-            {isLoggingIn ? "SIGNING IN... " : "SIGN IN"}
+            {isLoggingIn ? (
+              <Loading size="sm" text="SIGNING IN..." />
+            ) : (
+              "SIGN IN"
+            )}
           </button>
         </form>
       </Form>

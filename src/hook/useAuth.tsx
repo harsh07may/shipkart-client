@@ -2,7 +2,6 @@
 import * as authService from "@/lib/auth/AuthService";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-
 import { useRouter } from "next/navigation";
 import { hasToken } from "../lib/auth/TokenManager";
 
@@ -14,7 +13,7 @@ function useAuth() {
   const userQuery = useQuery({
     queryKey: ["user"],
     queryFn: authService.getCurrentUser,
-    enabled: hasToken(),
+    enabled: typeof window !== "undefined" && hasToken(),
     retry: false,
     staleTime: 5 * 60 * 1000,
   });
@@ -114,7 +113,7 @@ function useAuth() {
     // User data
     user: userQuery.data,
     isLoading: userQuery.isLoading,
-    isAuthenticated: !!userQuery.data && hasToken(),
+    isAuthenticated: !!userQuery.data && (typeof window === "undefined" || hasToken()),
 
     // Actions
     login: loginMutation.mutate,
